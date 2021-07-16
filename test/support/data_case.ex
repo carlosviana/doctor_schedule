@@ -16,6 +16,8 @@ defmodule DoctorSchedule.DataCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
       alias DoctorSchedule.Repo
@@ -28,10 +30,10 @@ defmodule DoctorSchedule.DataCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(DoctorSchedule.Repo)
+    :ok = Sandbox.checkout(DoctorSchedule.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(DoctorSchedule.Repo, {:shared, self()})
+      Sandbox.mode(DoctorSchedule.Repo, {:shared, self()})
     end
 
     :ok
