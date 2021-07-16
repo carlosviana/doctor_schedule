@@ -12,7 +12,6 @@ defmodule DoctorScheduleWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-
   end
 
   scope "/", DoctorScheduleWeb do
@@ -26,7 +25,6 @@ defmodule DoctorScheduleWeb.Router do
     pipe_through :api
 
     resources "/users", UserController, except: [:new, :edit]
-
   end
 
   # Enables LiveDashboard only for development
