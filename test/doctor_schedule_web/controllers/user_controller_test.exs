@@ -5,17 +5,18 @@ defmodule DoctorScheduleWeb.UserControllerTest do
   alias DoctorSchedule.Accounts.Repositories.AccountRepository
 
   @create_attrs %{
-    email: "some email",
+    email: "viana.mail@gmail.com",
     first_name: "some first_name",
     last_name: "some last_name",
-    password_hash: "some password_hash",
-    role: "some role"
+    password: "123456",
+    password_confirmation: "123456"
   }
   @update_attrs %{
-    email: "some updated email",
+    email: "viana@gmail.com",
     first_name: "some updated first_name",
     last_name: "some updated last_name",
-    password_hash: "some updated password_hash",
+    password: "123456",
+    password_confirmation: "123456",
     role: "some updated role"
   }
   @invalid_attrs %{email: nil, first_name: nil, last_name: nil, password_hash: nil, role: nil}
@@ -44,11 +45,9 @@ defmodule DoctorScheduleWeb.UserControllerTest do
       conn = get(conn, Routes.user_path(conn, :show, id))
 
       assert %{
-               "email" => "some email",
+               "email" => "viana.mail@gmail.com",
                "first_name" => "some first_name",
                "last_name" => "some last_name",
-               "password_hash" => "some password_hash",
-               "role" => "some role"
              } = json_response(conn, 200)["data"]
     end
 
@@ -68,11 +67,9 @@ defmodule DoctorScheduleWeb.UserControllerTest do
       conn = get(conn, Routes.user_path(conn, :show, id))
 
       assert %{
-               "email" => "some updated email",
+               "email" => "viana@gmail.com",
                "first_name" => "some updated first_name",
                "last_name" => "some updated last_name",
-               "password_hash" => "some updated password_hash",
-               "role" => "some updated role"
              } = json_response(conn, 200)["data"]
     end
 
