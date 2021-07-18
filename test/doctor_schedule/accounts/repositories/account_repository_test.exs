@@ -11,14 +11,14 @@ defmodule DoctorSchedule.Accounts.Repositories.AccountRepositoryTest do
       first_name: "some first_name",
       last_name: "some last_name",
       password: "123456",
-      password_confirmation: "123456",
+      password_confirmation: "123456"
     }
     @update_attrs %{
       email: "viana@gmail.com",
       first_name: "some updated first_name",
       last_name: "some updated last_name",
       password: "123456",
-      password_confirmation: "123456",
+      password_confirmation: "123456"
     }
     @invalid_attrs %{email: nil, first_name: nil, last_name: nil, password_hash: nil, role: nil}
 
@@ -49,7 +49,11 @@ defmodule DoctorSchedule.Accounts.Repositories.AccountRepositoryTest do
     end
 
     test "create_user/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = AccountRepository.create_user(@invalid_attrs)
+      response = AccountRepository.create_user(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = response
+      {:error, changeset} = response
+      assert "campo não pode ficar em branco" in errors_on(changeset).email
+      assert %{email: ["campo não pode ficar em branco"]} = errors_on(changeset)
     end
 
     test "update_user/2 with valid data updates the user" do

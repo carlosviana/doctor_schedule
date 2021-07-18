@@ -47,7 +47,7 @@ defmodule DoctorScheduleWeb.UserControllerTest do
       assert %{
                "email" => "viana.mail@gmail.com",
                "first_name" => "some first_name",
-               "last_name" => "some last_name",
+               "last_name" => "some last_name"
              } = json_response(conn, 200)["data"]
     end
 
@@ -69,7 +69,7 @@ defmodule DoctorScheduleWeb.UserControllerTest do
       assert %{
                "email" => "viana@gmail.com",
                "first_name" => "some updated first_name",
-               "last_name" => "some updated last_name",
+               "last_name" => "some updated last_name"
              } = json_response(conn, 200)["data"]
     end
 
