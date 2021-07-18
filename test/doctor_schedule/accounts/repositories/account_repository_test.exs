@@ -8,7 +8,6 @@ defmodule DoctorSchedule.Accounts.Repositories.AccountRepositoryTest do
   describe "users" do
     alias DoctorSchedule.Accounts.Entities.User
 
-
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
         attrs
@@ -45,7 +44,10 @@ defmodule DoctorSchedule.Accounts.Repositories.AccountRepositoryTest do
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
-      assert {:ok, %User{} = user} = AccountRepository.update_user(user, UserFixture.update_user())
+
+      assert {:ok, %User{} = user} =
+               AccountRepository.update_user(user, UserFixture.update_user())
+
       assert user.email == "viana@gmail.com"
       assert user.first_name == "some updated first_name"
       assert user.last_name == "some updated last_name"
@@ -54,7 +56,9 @@ defmodule DoctorSchedule.Accounts.Repositories.AccountRepositoryTest do
     test "update_user/2 with invalid data returns error changeset" do
       user = user_fixture()
 
-      assert {:error, %Ecto.Changeset{}} = AccountRepository.update_user(user, UserFixture.invalid_user())
+      assert {:error, %Ecto.Changeset{}} =
+               AccountRepository.update_user(user, UserFixture.invalid_user())
+
       assert user.email == AccountRepository.get_user!(user.id).email
     end
 
