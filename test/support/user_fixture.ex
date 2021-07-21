@@ -8,6 +8,15 @@ defmodule DoctorSchedule.UserFixture do
       password_confirmation: "123456"
     }
 
+  def auth_user,
+    do: %{
+      email: "viana.auth@gmail.com",
+      first_name: "some first_name",
+      last_name: "some last_name",
+      password: "123456",
+      password_confirmation: "123456"
+    }
+
   def update_user,
     do: %{
       email: "viana@gmail.com",
